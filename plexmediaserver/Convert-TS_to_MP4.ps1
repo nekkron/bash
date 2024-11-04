@@ -9,7 +9,7 @@ foreach ($file in $tsFiles) {
 
     if (!(Test-Path $outputFile)) {
         Write-Host "Converting $file to $outputFile"
-        ffmpeg -i "$($file.FullName)" -c:v libx264 -c:a aac "$outputFile"
+        ffmpeg -i "$($file.FullName)" -map 0 -c:v libx264 -c:a aac "$outputFile"
     } else {
         Write-Host "$outputFile already exists. Skipping conversion."
     }
